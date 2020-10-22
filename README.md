@@ -11,30 +11,30 @@ Run Bash scripts on AtCoder.
 ```console
 ❯ envchain atcoder bash-on-atcoder 'ls -l /imojudge'
 [INFO] GET https://atcoder.jp/login
-[INFO] 200 OK
+[INFO] 200
 [INFO] POST https://atcoder.jp/login
-[INFO] 302 Found
+[INFO] 302
 [INFO] GET https://atcoder.jp/settings
-[INFO] 200 OK
+[INFO] 200
 [INFO] GET https://atcoder.jp/contests/practice/custom_test
-[INFO] 200 OK
+[INFO] 200
 [INFO] POST https://atcoder.jp/contests/practice/custom_test/submit/json
-[INFO] 200 OK
+[INFO] 200
 [INFO] GET https://atcoder.jp/contests/practice/custom_test/json
-[INFO] 200 OK
+[INFO] 200
 [INFO] Result.Status = 1
 [INFO] Waiting 2s...
 [INFO] GET https://atcoder.jp/contests/practice/custom_test/json
-[INFO] 200 OK
+[INFO] 200
 [INFO] Result.Status = 3
 [INFO] POST https://atcoder.jp/contests/practice/custom_test/submit/json
-[INFO] 200 OK
+[INFO] 200
 [INFO] GET https://atcoder.jp/contests/practice/custom_test/json
-[INFO] 200 OK
+[INFO] 200
 [INFO] Result.Status = 1
 [INFO] Waiting 2s...
 [INFO] GET https://atcoder.jp/contests/practice/custom_test/json
-[INFO] 200 OK
+[INFO] 200
 [INFO] Result.Status = 3
 total 20
 drwxr-xr-x 3 contestant contestant 4096 Apr  1  2020 csharp
