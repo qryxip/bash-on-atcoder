@@ -25,6 +25,7 @@ macro_rules! selector(($s:expr $(,)?) => ({
 
 fn main() -> anyhow::Result<()> {
     let Opt {
+        short,
         timeout,
         contest,
         color,
@@ -62,37 +63,42 @@ fn main() -> anyhow::Result<()> {
         .get_html(&format!("/contests/{}/custom_test", contest), &[200])?
         .extract_csrf_token()?;
 
-    let code = shell_escape::unix::escape(code.into());
-
-    let md5sum = {
-        let code = format!(
-            r#"CODE={}
-output="$(bash -c "$CODE" && printf '#')" && echo -n "${{output%#}}" > ./output && md5sum ./output"#,
-            code,
-        );
+    let output = if short {
         submit_bash_code(&mut sess, &contest, &csrf_token, &code)?
-    };
-    let md5sum = shell_escape::unix::escape(str::from_utf8(&md5sum)?.trim_end().into());
+    } else {
+        let code = shell_escape::unix::escape(code.into());
 
-    let mut acc = vec![];
-    while {
-        let code = format!(
-            r#"
+        let md5sum = {
+            let code = format!(
+                r#"CODE={}
+output="$(bash -c "$CODE" && printf '#')" && echo -n "${{output%#}}" > ./output && md5sum ./output"#,
+                code,
+            );
+            submit_bash_code(&mut sess, &contest, &csrf_token, &code)?
+        };
+        let md5sum = shell_escape::unix::escape(str::from_utf8(&md5sum)?.trim_end().into());
+
+        let mut acc = vec![];
+        while {
+            let code = format!(
+                r#"
 CODE={}
 MD5SUM={}
 OFFSET={}
 output="$(bash -c "$CODE" && printf '#')" && output="${{output%#}}" && echo -n "$output" > ./output && echo -n "$MD5SUM" > ./check && md5sum -c ./check >&2 && echo -n "${{output:$OFFSET:{}}}""#,
-            code,
-            md5sum,
-            acc.len(),
-            CHUNK_LEN,
-        );
-        acc.extend(submit_bash_code(&mut sess, &contest, &csrf_token, &code)?);
-        acc.len() % CHUNK_LEN == 0
-    } {}
+                code,
+                md5sum,
+                acc.len(),
+                CHUNK_LEN,
+            );
+            acc.extend(submit_bash_code(&mut sess, &contest, &csrf_token, &code)?);
+            acc.len() % CHUNK_LEN == 0
+        } {}
+        acc
+    };
 
     let mut stdout = io::stdout();
-    stdout.write_all(&acc)?;
+    stdout.write_all(&output)?;
     stdout.flush()?;
     return Ok(());
 
@@ -179,6 +185,10 @@ output="$(bash -c "$CODE" && printf '#')" && output="${{output%#}}" && echo -n "
 
 #[derive(StructOpt, Debug)]
 struct Opt {
+    /// Assume the output is equal to or less than 2KiB.
+    #[structopt(long)]
+    short: bool,
+
     /// Timeout
     #[structopt(long, value_name("SECS"), parse(try_from_str = parse_seconds))]
     timeout: Option<Duration>,
