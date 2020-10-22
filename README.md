@@ -16,24 +16,24 @@ Run Bash scripts on AtCoder.
 [INFO] 302 Found
 [INFO] GET https://atcoder.jp/settings
 [INFO] 200 OK
-[INFO] GET https://atcoder.jp/contests/language-test-202001/custom_test
+[INFO] GET https://atcoder.jp/contests/practice/custom_test
 [INFO] 200 OK
-[INFO] POST https://atcoder.jp/contests/language-test-202001/custom_test/submit/json
+[INFO] POST https://atcoder.jp/contests/practice/custom_test/submit/json
 [INFO] 200 OK
-[INFO] GET https://atcoder.jp/contests/language-test-202001/custom_test/json
+[INFO] GET https://atcoder.jp/contests/practice/custom_test/json
 [INFO] 200 OK
 [INFO] Result.Status = 1
 [INFO] Waiting 2s...
-[INFO] GET https://atcoder.jp/contests/language-test-202001/custom_test/json
+[INFO] GET https://atcoder.jp/contests/practice/custom_test/json
 [INFO] 200 OK
 [INFO] Result.Status = 3
-[INFO] POST https://atcoder.jp/contests/language-test-202001/custom_test/submit/json
+[INFO] POST https://atcoder.jp/contests/practice/custom_test/submit/json
 [INFO] 200 OK
-[INFO] GET https://atcoder.jp/contests/language-test-202001/custom_test/json
+[INFO] GET https://atcoder.jp/contests/practice/custom_test/json
 [INFO] 200 OK
 [INFO] Result.Status = 1
 [INFO] Waiting 2s...
-[INFO] GET https://atcoder.jp/contests/language-test-202001/custom_test/json
+[INFO] GET https://atcoder.jp/contests/practice/custom_test/json
 [INFO] 200 OK
 [INFO] Result.Status = 3
 total 20

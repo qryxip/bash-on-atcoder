@@ -192,7 +192,7 @@ struct Opt {
     #[structopt(long, value_name("SECS"), parse(try_from_str = parse_seconds))]
     timeout: Option<Duration>,
 
-    #[structopt(long, value_name("STRING"), default_value("language-test-202001"))]
+    #[structopt(long, value_name("STRING"), default_value("practice"))]
     contest: String,
 
     /// Coloring
