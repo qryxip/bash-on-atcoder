@@ -1,10 +1,8 @@
 # bash-on-atcoder
 
 [![CI](https://github.com/qryxip/bash-on-atcoder/workflows/CI/badge.svg)](https://github.com/qryxip/bash-on-atcoder/actions?workflow=CI)
-<!--
 [![Crates.io](https://img.shields.io/crates/v/bash-on-atcoder.svg)](https://crates.io/crates/bash-on-atcoder)
 [![Crates.io](https://img.shields.io/crates/l/bash-on-atcoder.svg)](https://crates.io/crates/bash-on-atcoder)
--->
 
 Run Bash scripts on AtCoder.
 
@@ -79,7 +77,7 @@ drwxr-xr-x 3 contestant contestant 4096 Apr  1  2020 visualbasic
 
 ## Installation
 
-### Crates.io (**not yet**)
+### Crates.io
 
 ```console
 ❯ cargo install bash-on-atcoder
@@ -91,7 +89,7 @@ drwxr-xr-x 3 contestant contestant 4096 Apr  1  2020 visualbasic
 ❯ cargo install --git https://github.com/qryxip/bash-on-atcoder
 ```
 
-### GitHub Releases (**not yet**)
+### GitHub Releases
 
 [Releases](https://github.com/qryxip/bash-on-atcoder/releases)
 
