@@ -1,6 +1,6 @@
 [package]
 name = "bash-on-atcoder"
-version = "0.0.0"
+version = "0.1.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
 license = "CC0-1.0"
@@ -8,7 +8,6 @@ description = "Run Bash scripts on AtCoder."
 repository = "https://github.com/qryxip/bash-on-atcoder"
 keywords = ["atcoder", "cli"]
 categories = ["command-line-utilities"]
-publish = false
 
 [dependencies]
 anyhow = "1.0.33"
