@@ -3,18 +3,20 @@ use curl::easy::{Easy, Form};
 use env_logger::fmt::{Color, WriteStyle};
 use log::{info, Level, LevelFilter};
 use once_cell::sync::Lazy;
-use scraper::selector::Selector;
-use scraper::Html;
-use serde::de::{DeserializeOwned, Error as _};
-use serde::{Deserialize, Deserializer};
+use scraper::{selector::Selector, Html};
+use serde::{
+    de::{DeserializeOwned, Error as _},
+    Deserialize, Deserializer,
+};
+use std::{
+    env::{self, VarError},
+    io::{self, Write as _},
+    num::ParseIntError,
+    str, thread,
+    time::Duration,
+};
 use structopt::StructOpt;
 use url::Url;
-
-use std::env::{self, VarError};
-use std::io::{self, Write as _};
-use std::num::ParseIntError;
-use std::time::Duration;
-use std::{str, thread};
 
 macro_rules! selector(($s:expr $(,)?) => ({
     static SELECTOR: Lazy<Selector> = Lazy::new(|| Selector::parse($s).unwrap());
